@@ -1,11 +1,23 @@
 // tailwind.config.js
 module.exports = {
-  darkMode: "class", // Enable class-based dark mode
+  darkMode: "class", // Enables dark mode via class (e.g., <html class="dark">)
   content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx}", // Update this path if necessary for your project
+    "./src/**/*.{astro,html,js,jsx,ts,tsx}", // Include all relevant files for purging
   ],
   theme: {
-    extend: {}, // Add custom themes here
+    extend: {
+      // You can extend Tailwind's default theme here
+      colors: {
+        // Example: custom colors
+        "black-100": "rgba(0, 0, 0, 0.1)",
+      },
+      fontFamily: {
+        // Example: custom font family
+        display: ["Basement", "sans-serif"],
+      },
+    },
   },
-  plugins: [], // Add plugins if required later
+  plugins: [
+    // Add Tailwind plugins here, e.g., require('@tailwindcss/forms')
+  ],
 };

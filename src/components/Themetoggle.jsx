@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import { SunIcon, MoonIcon, } from "@heroicons/react/24/solid";
+import WeatherCard from "@/components/landing/WeatherWidget";
 
-export default function ThemeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+export default function ThemeToggle({ initialDarkMode = false, lightModeColor = "bg-yellow-300", darkModeColor = "bg-purple-500" }) {
+  const [isDarkMode, setIsDarkMode] = useState(initialDarkMode);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -17,14 +18,14 @@ export default function ThemeToggle() {
   }, [isDarkMode]);
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center transition-colors duration-500 ${isDarkMode ? "bg-black text-white" : "bg-white text-black"}`}>
+    <div className={`h-screen transition-colors duration-500 ${isDarkMode ? "bg-black text-white" : "bg-white text-black"}`}>
       <button
         onClick={toggleTheme}
-        className={`relative flex items-center w-16 h-8 p-1  rounded-full transition-colors duration-500 ${isDarkMode ? "bg-purple-500" : "bg-yellow-300"}`}
+        className={`relative flex items-center w-16 h-8 p-1 rounded-full transition-colors duration-500 ${isDarkMode ? darkModeColor : lightModeColor}`}
       >
         {/* Sun Icon - visible only in Light Mode */}
         {!isDarkMode && (
-          <div className="absolute left-1 top-1/2 transform -translate-y-1/2 w-6 h-6 flex items-center justify-center  rounded-full bg-white">
+          <div className="absolute left-1 top-1/2 transform -translate-y-1/2 w-6 h-6 flex items-center justify-center rounded-full bg-white">
             <SunIcon className="h-5 w-5 text-yellow-700" />
           </div>
         )}
@@ -36,10 +37,10 @@ export default function ThemeToggle() {
           </div>
         )}
       </button>
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <WeatherCard isDarkMode={isDarkMode} />
+      </div>
 
-      <h1 className="mt-6 text-2xl font-bold">
-        {isDarkMode ? "Dark" : "Light"} Mode
-      </h1>
     </div>
   );
 }
