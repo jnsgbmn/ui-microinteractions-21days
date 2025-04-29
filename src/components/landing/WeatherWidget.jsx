@@ -16,7 +16,7 @@ const WeatherWidget = ({ isDarkMode }) => {
     useEffect(() => {
         const fetchWeather = async () => {
             try {
-                const apiKey = 'd3e35e319cbceadd9fff17ee46074244'; // Replace with your OpenWeatherMap API key
+                const apiKey = ''; // Replace with your OpenWeatherMap API key
                 const location = 'Tokyo'; // Replace with desired location
                 const response = await fetch(
                     `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`
