@@ -24,29 +24,17 @@
 
 /* Font Face for "Basement" */
 @font-face {
-  font-family: "Basement";
+  /* font-family: "Basement";
   src: url("../fonts/BSBlack.eot");
   src: url("../fonts/BSBlack.eot?#iefix") format("embedded-opentype"),
     url("../fonts/BSBlack.woff2") format("woff2"),
     url("../fonts/BSBlack.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  descent-override: 0%;
+  descent-override: 0%; */
 }
 
 /* Marquee Animation */
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 15s linear infinite;
-}
 
 /* Gradient Grid Background */
 .gradient-grid {

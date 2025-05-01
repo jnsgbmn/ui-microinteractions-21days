@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IconSun, IconDroplets, IconCloudRain, IconWind } from '@tabler/icons-react';
 
-const WeatherWidget = ({ isDarkMode }) => {
+const WeatherWidget = ({ isDarkMode, location }) => {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
 
@@ -16,8 +16,7 @@ const WeatherWidget = ({ isDarkMode }) => {
     useEffect(() => {
         const fetchWeather = async () => {
             try {
-                const apiKey = ''; // Replace with your OpenWeatherMap API key
-                const location = 'Tokyo'; // Replace with desired location
+                const apiKey = 'd3e35e319cbceadd9fff17ee46074244'; // Replace with your OpenWeatherMap API key
                 const response = await fetch(
                     `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`
                 );
@@ -32,7 +31,7 @@ const WeatherWidget = ({ isDarkMode }) => {
         };
 
         fetchWeather();
-    }, []);
+    }, [location]);
 
     if (error) {
         return <div className="text-red-500">Error: {error}</div>;
@@ -58,7 +57,7 @@ const WeatherWidget = ({ isDarkMode }) => {
                     <span className="text-sm align-super">°C</span>
                 </div>
             </div>
-            <p className={`text-xs ${isDarkMode ? "text-black" : "text-white"}`}>
+            <p className={` text-xs ${isDarkMode ? "text-yellow-500" : "text-yellow-500"}`}>
                 H: {Math.round(weather.main.temp_max)}° L: {Math.round(weather.main.temp_min)}° &nbsp;
                 {new Date(weather.dt * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
             </p>
